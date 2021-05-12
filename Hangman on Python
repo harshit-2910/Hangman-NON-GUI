@@ -1,0 +1,91 @@
+import random
+def hangman():
+    x=random.choice(['Dog','Sheep','Zebra','Elephant','Tiger',' Lion','Hippopotamus','Giraffe','Cat','Monkey'])
+    validletters='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXY'
+    turns=10
+    guessmade=''
+
+    while len(x)>0:
+        main=''
+        missed=0
+        
+        for letter in x:
+            if letter in guessmade:
+                main= main + letter
+            else:
+                main= main + '_'+' '
+                
+        if main == x:
+            print (main)
+            print('Yay! You Won')
+            break
+        
+        print('Guess the word:', main)
+        guess=input()
+        
+        if guess in validletters:
+            guessmade=guessmade + guess
+        else:
+            print('Enter a valid Characer')
+            guess=input()
+        if guess not in x:
+            turns= turns-1
+            if turns ==9:
+                print ('9 Turns left')
+                print ('---------')
+            if turns==8:
+                print ('8 Turns left ')
+                print(' --------- ')
+                print(' 0 ')
+            if turns==7:
+                print ('7 Turns left')
+                print (' ------- ')
+                print(' 0 ')
+                print(' | ')
+            if turns == 6:
+                print ('6 Turns left')
+                print (' ------ ')
+                print(' 0 ')
+                print(' | ')
+                print ('/  ')
+            if turns == 5:
+                print ('5 Turns left')
+                print (' ----- ')
+                print(' 0 ')
+                print(' | ')
+                print('/ \ ')
+            if turns == 4:
+                print ('4 Turns left')
+                print (' ---- ')
+                print('\0 ')
+                print(' | ')
+                print('/ \ ')
+            if turns == 3:
+                print ('3 Turns left')
+                print (' ---- ')
+                print('\0/ ')
+                print(' | ')
+                print('/ \ ')
+            if turns == 2:
+                print ('2 Turns left')
+                print (' ---- ')
+                print('\0/| ')
+                print(' | ')
+                print('/ \ ')
+            if turns == 1:
+                print ('Last Chance left')
+                print (' ---- ')
+                print('\0_|/ ')
+                print(' | ')
+                print('/ \ ')
+            if turns==0:
+                print('Sorry You Lost')
+                print('___________________')
+                print('--------------------')
+                print('The Right Word is',x)
+                break
+                
+name=input('Enter your name: ')
+print ('Welcome',name,'try to guess the word with 10 Chances')
+print ('-------------------')
+hangman()
